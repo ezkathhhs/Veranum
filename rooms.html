@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veranum - Habitaciones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0d9488',
+                        secondary: '#0f766e',
+                        accent: '#14b8a6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .room-card {
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .room-image {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #0d9488, #0f766e);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .room-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .room-header {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+        }
+        .room-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        }
+        .room-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .room-capacity {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn {
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Barra de navegación CORREGIDA -->
+        <nav class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <!-- Logo enlaza a index.html -->
+                        <a href="inicio.html" class="flex-shrink-0 flex items-center">
+                            <div class="bg-primary h-10 w-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-hotel text-white text-xl"></i>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">VERANUM</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4">
+                        <!-- Enlaces corregidos -->
+                        <a href="inicio.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Inicio</a>
+                        <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Sobre Nosotros</a>
+                        <a href="rooms.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Habitaciones</a>
+                        <a href="index.html" class="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-secondary">Iniciar Sesión</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido de la página de habitaciones -->
+        <main class="flex-grow">
+            <div class="relative bg-secondary py-16">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                            Habitaciones Disponibles
+                        </h1>
+                        <p class="mt-6 max-w-lg mx-auto text-xl text-gray-100">
+                            Se han encontrado 3 habitaciones en Santiago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <!-- Habitación Estándar -->
+                <div class="room-card bg-white rounded-xl overflow-hidden mb-16">
+                    <div class="room-header">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" 
+                             alt="Habitación Estándar" class="w-full h-full object-cover">
+                        <h2 class="room-title">Habitación Estándar</h2>
+                        <div class="room-capacity">
+                            <i class="fas fa-user-friends mr-2"></i>2 personas
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed text-primary mr-2"></i>
+                                <span class="text-gray-700 font-medium">Cama: 1 cama queen</span>
+                            </div>
+                            <div class="price-tag">$89.900</div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Especificaciones:</h3>
+                            <div class="room-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-wifi text-primary"></i>
+                                    <span>Wi-Fi gratuito</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-tv text-primary"></i>
+                                    <span>TV LED 40" con cable</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-wind text-primary"></i>
+                                    <span>Aire acondicionado</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-laptop text-primary"></i>
+                                    <span>Escritorio de trabajo</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-shower text-primary"></i>
+                                    <span>Baño privado con ducha</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button class="btn py-3 px-10 bg-primary text-white font-bold rounded-md hover:bg-secondary text-lg">
+                                RESERVAR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Habitación Doble -->
+                <div class="room-card bg-white rounded-xl overflow-hidden mb-16">
+                    <div class="room-header">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" 
+                             alt="Habitación Doble" class="w-full h-full object-cover">
+                        <h2 class="room-title">Habitación Doble</h2>
+                        <div class="room-capacity">
+                            <i class="fas fa-user-friends mr-2"></i>2 personas
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed text-primary mr-2"></i>
+                                <span class="text-gray-700 font-medium">Cama: 2 camas twin o 1 cama king</span>
+                            </div>
+                            <div class="price-tag">$119.900</div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Especificaciones:</h3>
+                            <div class="room-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-mountain text-primary"></i>
+                                    <span>Vista a la ciudad</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-wine-bottle text-primary"></i>
+                                    <span>Minibar</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-lock text-primary"></i>
+                                    <span>Caja de seguridad</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-wifi text-primary"></i>
+                                    <span>Wi-Fi de alta velocidad</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-tv text-primary"></i>
+                                    <span>TV Smart 50"</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bath text-primary"></i>
+                                    <span>Baño con tina y amenities premium</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button class="btn py-3 px-10 bg-primary text-white font-bold rounded-md hover:bg-secondary text-lg">
+                                RESERVAR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suite Ejecutiva -->
+                <div class="room-card bg-white rounded-xl overflow-hidden">
+                    <div class="room-header">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGx1eHVyeSUyMGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Suite Ejecutiva" class="w-full h-full object-cover">
+                        <h2 class="room-title">Suite Ejecutiva</h2>
+                        <div class="room-capacity">
+                            <i class="fas fa-user-friends mr-2"></i>2 adultos + 1 niño
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed text-primary mr-2"></i>
+                                <span class="text-gray-700 font-medium">Cama: 1 cama king</span>
+                            </div>
+                            <div class="price-tag">$189.900</div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Especificaciones:</h3>
+                            <div class="room-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-couch text-primary"></i>
+                                    <span>Sala de estar privada</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-laptop text-primary"></i>
+                                    <span>Escritorio ejecutivo</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-coffee text-primary"></i>
+                                    <span>Cafetera Nespresso</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-tv text-primary"></i>
+                                    <span>TV Smart 55"</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-hot-tub text-primary"></i>
+                                    <span>Bañera de hidromasaje</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-concierge-bell text-primary"></i>
+                                    <span>Servicio de habitaciones 24 hrs</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button class="btn py-3 px-10 bg-primary text-white font-bold rounded-md hover:bg-secondary text-lg">
+                                RESERVAR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <!-- Botón corregido para enlazar a index.html -->
+                    <a href="inicio.html" class="inline-block btn py-3 px-8 bg-gray-800 text-white font-medium rounded-md hover:bg-gray-700">
+                        <i class="fas fa-arrow-left mr-2"></i> Volver a la página principal
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer CORREGIDO -->
+        <footer class="bg-gray-800 text-white">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">VERANUM</h3>
+                        <p class="text-gray-300">
+                            Más de 30 años brindando excelencia en el servicio y atención personalizada para hacer sentir a cada huésped como en casa.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                        <ul class="space-y-2">
+                            <!-- Enlaces corregidos -->
+                            <li><a href="inicio.html" class="text-gray-300 hover:text-white">Inicio</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white">Sobre Nosotros</a></li>
+                            <li><a href="rooms.html" class="text-gray-300 hover:text-white">Habitaciones</a></li>
+                            <li><a href="index.html" class="text-gray-300 hover:text-white">Iniciar Sesión</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Contacto</h3>
+                        <p class="text-gray-300">
+                            <i class="fas fa-envelope mr-2"></i> veranum@gmail.com
+                        </p>
+                        <p class="mt-2 text-gray-300">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Santiago y V Región, Chile
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+                    <p>&copy; 2025 Veranum Hoteles. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
