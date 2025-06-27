@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veranum - Sobre Nosotros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0d9488',
+                        secondary: '#0f766e',
+                        accent: '#14b8a6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hotel-history {
+            background: linear-gradient(rgba(13, 148, 136, 0.05), rgba(13, 148, 136, 0.05));
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0d9488;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% + 24px);
+            background: #0d9488;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn {
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .management-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Barra de navegación -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="inicio.html" class="flex-shrink-0 flex items-center">
+                        <div class="bg-primary h-10 w-10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-hotel text-white text-xl"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">VERANUM</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="inicio.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Inicio</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-primary">Sobre Nosotros</a>
+                    <a href="rooms.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Habitaciones</a>
+                    <a href="index.html" class="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-secondary">Iniciar Sesión</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabecera "Sobre Nosotros" -->
+    <div class="relative bg-primary py-16">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                    Sobre nosotros
+                </h1>
+                <p class="mt-6 max-w-lg mx-auto text-xl text-gray-100">
+                    Más de 30 años brindando excelencia en el servicio
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Historia del hotel -->
+        <div class="hotel-history rounded-xl p-8 mb-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Nuestra Historia</h2>
+                <div class="prose prose-lg max-w-none text-gray-600">
+                    <p class="mb-4">
+                        En Veranum contamos con más de 30 años de trayectoria, con dos exclusivos hoteles ubicados en Santiago y la V Región, diseñados para brindar comodidad, excelencia en el servicio y una atención personalizada que hace sentir a cada huésped como en casa.
+                    </p>
+                    <p class="mb-4">
+                        Nuestro compromiso es crear momentos únicos que superen las expectativas de quienes nos eligen. Desde nuestra fundación en 1995, hemos crecido manteniendo nuestros valores fundamentales: hospitalidad auténtica, atención al detalle y compromiso con la excelencia.
+                    </p>
+                    <p class="mb-4">
+                        Cada rincón de nuestros hoteles ha sido diseñado pensando en la comodidad y el bienestar de nuestros huéspedes. Nos enorgullece ofrecer experiencias memorables que nuestros clientes llevan consigo mucho después de su estadía.
+                    </p>
+                </div>
+                
+                <!-- Línea de tiempo -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Nuestra Trayectoria</h3>
+                    <div class="max-w-2xl mx-auto">
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-bold text-gray-800">1995 - Fundación</h4>
+                            <p class="text-gray-600 mt-2">Apertura del primer hotel Veranum en Santiago, con 50 habitaciones y un concepto innovador de servicio personalizado.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-bold text-gray-800">2002 - Expansión a la V Región</h4>
+                            <p class="text-gray-600 mt-2">Inauguración de nuestro segundo establecimiento en la costa, enfocado en experiencias de relajo y conexión con la naturaleza.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-bold text-gray-800">2010 - Renovación Total</h4>
+                            <p class="text-gray-600 mt-2">Modernización completa de ambas propiedades para ofrecer las últimas comodidades y tecnologías a nuestros huéspedes.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-bold text-gray-800">2020 - Certificación Sostenible</h4>
+                            <p class="text-gray-600 mt-2">Obtención de la certificación de turismo sostenible por nuestras prácticas ecoamigables y compromiso con la comunidad.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-xl font-bold text-gray-800">2025 - Excelencia Continua</h4>
+                            <p class="text-gray-600 mt-2">Seguimos innovando para ofrecer experiencias únicas, manteniendo nuestra esencia de servicio excepcional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valores corporativos -->
+        <div class="bg-white rounded-xl shadow-md p-8 mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Nuestros Valores</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Hospitalidad Auténtica</h3>
+                    <p class="text-gray-600">
+                        Tratamos a cada huésped como un miembro de nuestra familia, con calidez, respeto y atención genuina.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Excelencia en Servicio</h3>
+                    <p class="text-gray-600">
+                        Nos esforzamos por superar expectativas en cada detalle, ofreciendo un servicio impecable y personalizado.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Sostenibilidad</h3>
+                    <p class="text-gray-600">
+                        Operamos con responsabilidad ambiental y social, implementando prácticas ecoamigables y apoyando a comunidades locales.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipo directivo - CORRECCIÓN APLICADA -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Nuestro Equipo Directivo</h2>
+            
+            <!-- Cambié a flex para mejor control de altura -->
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 bg-white rounded-xl shadow-md overflow-hidden management-card">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-64"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800">María Fernández</h3>
+                        <p class="text-primary font-medium">Directora General</p>
+                        <p class="text-gray-600 mt-3">
+                            Con más de 25 años en la industria hotelera, María lidera nuestra visión estratégica con pasión y dedicación.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex-1 bg-white rounded-xl shadow-md overflow-hidden management-card">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-64"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800">Carlos Gutiérrez</h3>
+                        <p class="text-primary font-medium">Director de Operaciones</p>
+                        <p class="text-gray-600 mt-3">
+                            Experto en gestión hotelera, Carlos asegura que cada detalle operativo cumpla con nuestros estándares de excelencia.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex-1 bg-white rounded-xl shadow-md overflow-hidden management-card">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-64"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800">Ana Rodríguez</h3>
+                        <p class="text-primary font-medium">Directora de Experiencia al Cliente</p>
+                        <p class="text-gray-600 mt-3">
+                            Ana y su equipo crean experiencias memorables para nuestros huéspedes, superando expectativas en cada interacción.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reconocimientos - CORRECCIÓN APLICADA -->
+        <div class="bg-gray-50 rounded-xl p-8 mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Reconocimientos</h2>
+            
+            <!-- Cambié a flex-wrap para mejor comportamiento responsivo -->
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="w-full sm:w-64 bg-white p-6 rounded-lg shadow-sm text-center">
+                    <i class="fas fa-award text-4xl text-primary mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Premio a la Excelencia</h3>
+                    <p class="text-gray-600 text-sm mt-2">Asociación Hotelera de Chile - 2023</p>
+                </div>
+                
+                <div class="w-full sm:w-64 bg-white p-6 rounded-lg shadow-sm text-center">
+                    <i class="fas fa-leaf text-4xl text-primary mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Certificación Sostenible</h3>
+                    <p class="text-gray-600 text-sm mt-2">Green Hotels Global - 2022</p>
+                </div>
+                
+                <div class="w-full sm:w-64 bg-white p-6 rounded-lg shadow-sm text-center">
+                    <i class="fas fa-star text-4xl text-primary mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Mejor Servicio al Cliente</h3>
+                    <p class="text-gray-600 text-sm mt-2">Premios Turismo Chile - 2021</p>
+                </div>
+                
+                <div class="w-full sm:w-64 bg-white p-6 rounded-lg shadow-sm text-center">
+                    <i class="fas fa-heart text-4xl text-primary mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Compromiso Social</h3>
+                    <p class="text-gray-600 text-sm mt-2">Fundación Comunitaria - 2020</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información de contacto - CORRECCIÓN APLICADA -->
+        <div class="text-center py-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Contáctanos</h2>
+            <p class="text-lg text-gray-600 mb-6">
+                Estamos aquí para responder cualquier pregunta que puedas tener
+            </p>
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary text-xl mr-3"></i>
+                            <span>veranum@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt text-primary text-xl mr-3"></i>
+                            <span>+56 2 2345 6789</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="inicio.html" class="inline-block btn py-3 px-8 bg-primary text-white font-medium rounded-md hover:bg-secondary">
+                            <i class="fas fa-calendar-check mr-2"></i> Reservar Ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">VERANUM</h3>
+                    <p class="text-gray-300">
+                        Más de 30 años brindando excelencia en el servicio y atención personalizada para hacer sentir a cada huésped como en casa.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="inicio.html" class="text-gray-300 hover:text-white">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">Sobre Nosotros</a></li>
+                        <li><a href="rooms.html" class="text-gray-300 hover:text-white">Habitaciones</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contacto</h3>
+                    <p class="text-gray-300">
+                        <i class="fas fa-envelope mr-2"></i> veranum@gmail.com
+                    </p>
+                    <p class="mt-2 text-gray-300">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Santiago y V Región, Chile
+                    </p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2025 Veranum Hoteles. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
