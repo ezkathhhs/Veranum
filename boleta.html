@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boleta - Veranum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        veranum: {
+                            50: '#f0fdfa',
+                            100: '#e6f7f5',
+                            200: '#c2e9e5',
+                            300: '#8dd5d0',
+                            400: '#50b9b3',
+                            500: '#2d9d96',
+                            600: '#1e7e78',
+                            700: '#0d9488', // Color principal de Veranum
+                            800: '#0a756c',
+                            900: '#085e57',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0d9488',
+                        secondary: '#0f766e',
+                        accent: '#14b8a6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .veranum-bg {
+            background-color: #0d9488;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #0d9488;
+            border-radius: 50%;
+            animation: confetti-fall 3s ease-in-out infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+        }
+        
+        .veranum-border {
+            border-color: #0d9488;
+        }
+        
+        .veranum-shadow {
+            box-shadow: 0 10px 30px rgba(13, 148, 136, 0.2);
+        }
+        
+        .animation-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .user-icon {
+        width: 60px;   /* Reduje de 36px a 28px */
+        height: 60px;  /* Reduje de 36px a 28px */
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        }
+    
+        .user-icon:hover {
+            transform: scale(1.1);
+            border-color: #0d9488;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="content-wrapper">
+        <!-- Barra de navegación CORREGIDA -->
+        <nav class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <!-- Logo enlaza a index.html -->
+                        <a href="inicio.html" class="flex-shrink-0 flex items-center">
+                            <div class="bg-primary h-10 w-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-hotel text-white text-xl"></i>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">VERANUM</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4">
+                        <!-- Enlaces corregidos -->
+                        <a href="inicio.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Inicio</a>
+                        <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Sobre Nosotros</a>
+                        <a href="rooms.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary">Habitaciones</a>
+                        <a href="index.html" class="transition-colors">
+                            <img 
+                                src="https://cdn-icons-png.flaticon.com/512/4122/4122939.png" 
+                                alt="Iniciar sesión" 
+                                class="user-icon">
+                            </img>
+                        </a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido de Boleta -->
+    <div class="container mx-auto px-4 py-12 max-w-4xl relative overflow-hidden">
+        <!-- Efecto confetti -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="confetti" style="left: 20%; animation-delay: 0.5s;"></div>
+            <div class="confetti" style="left: 30%; animation-delay: 1.2s;"></div>
+            <div class="confetti" style="left: 40%; animation-delay: 0.8s;"></div>
+            <div class="confetti" style="left: 50%; animation-delay: 2.1s;"></div>
+            <div class="confetti" style="left: 60%; animation-delay: 1.5s;"></div>
+            <div class="confetti" style="left: 70%; animation-delay: 0.3s;"></div>
+            <div class="confetti" style="left: 80%; animation-delay: 1.8s;"></div>
+            <div class="confetti" style="left: 90%; animation-delay: 0.7s;"></div>
+        </div>
+        
+        <div class="text-center mb-12">
+            <div class="inline-block bg-veranum-700 text-black p-3 rounded-full mb-6 animation-pulse">
+                <i class="fas fa-check-circle text-8xl"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-veranum-700 mb-4">¡Bienvenido a la experiencia Veranum!</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Gracias por elegirnos. Su reserva ha sido confirmada y estamos preparando todo para que disfrute de una estadía inolvidable.
+            </p>
+        </div>
+        
+        <div class="bg-white rounded-xl veranum-shadow p-8 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Detalles de la reserva -->
+                <div class="border-r border-gray-100 md:pr-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6">Detalles de la Reserva</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-gray-600 mb-1">Número de Reserva</p>
+                            <p class="font-semibold text-gray-800">#VRN-2025-0721</p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Estado de la Reserva</p>
+                            <p class="font-semibold text-veranum-700 inline-flex items-center">
+                                <i class="fas fa-check-circle mr-2"></i> Confirmada
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Su reserva quedó agendada para el día</p>
+                            <div class="bg-veranum-50 border border-veranum-100 rounded-lg py-3 px-4 inline-block mt-1">
+                                <p class="font-bold text-veranum-700 text-xl">20/06/2025</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Le enviaremos la confirmación por correo</p>
+                            <p class="font-medium text-gray-800">mat.loyolac@duocuc.cl</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detalles del hotel -->
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6">Detalles del Hotel</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-gray-600 mb-1">Hotel</p>
+                            <p class="font-semibold text-gray-800">Veranum Santiago Premium</p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Habitación</p>
+                            <p class="font-semibold text-gray-800">Suite Estandar</p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Duración de la estadía</p>
+                            <p class="font-semibold text-gray-800">4 noches (20-06 - 24/06)</p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 mb-1">Huéspedes</p>
+                            <p class="font-semibold text-gray-800">2 adultos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-100 mt-8 pt-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-6">Ubicación</h2>
+                <div class="flex items-start">
+                    <div class="mr-4 mt-1 text-veranum-700">
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-800 font-medium">
+                            Avenida Presidente Kennedy 4422,<br>
+                            Viaxura, Viaxura, 7630633<br>
+                            Santiago, Chile
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://www.google.com/maps?ll=-33.403507,-70.585945&z=15&t=m&hl=es-419&gl=CL&mapclient=embed&q=Av.+Pdte.+Kennedy+4422+7630638+Vitacura+Región+Metropolitana"
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="inline-flex items-center text-veranum-700 hover:text-veranum-800">
+                                <i class="fas fa-map mr-2"></i> Ver en mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl veranum-shadow p-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">¿Qué hacer ahora?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="border border-gray-100 rounded-lg p-5 text-center hover:shadow-md transition-shadow">
+                    <div class="text-veranum-700 mb-3">
+                        <i class="fas fa-calendar-check text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Agendar en tu calendario</h3>
+                    <p class="text-gray-600 text-sm">Añade esta reserva a tu calendario personal para no olvidar tu viaje</p>
+                </div>
+                
+                <div class="border border-gray-100 rounded-lg p-5 text-center hover:shadow-md transition-shadow">
+                    <div class="text-veranum-700 mb-3">
+                        <i class="fas fa-hotel text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Explorar servicios</h3>
+                    <p class="text-gray-600 text-sm">Descubre los servicios adicionales que puedes reservar para tu estadía</p>
+                </div>
+                
+                <div class="border border-gray-100 rounded-lg p-5 text-center hover:shadow-md transition-shadow">
+                    <div class="text-veranum-700 mb-3">
+                        <i class="fas fa-share-alt text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Compartir reserva</h3>
+                    <p class="text-gray-600 text-sm">Comparte los detalles de tu reserva con otros viajeros</p>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-veranum-700 hover:bg-veranum-800 text-white font-bold py-3 px-8 rounded-full transition-colors">
+                    <i class="fas fa-download mr-2"></i> Descargar Comprobante
+                </button>
+                <p class="text-gray-600 text-sm mt-4">
+                    También puedes acceder a esta información desde tu cuenta Veranum
+                </p>
+            </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+            <p class="text-gray-600 mb-3">¿Necesitas ayuda con tu reserva?</p>
+            <a href="#" class="inline-flex items-center text-veranum-700 hover:text-veranum-800 font-medium">
+                <i class="fas fa-headset mr-2"></i> Contactar al servicio al cliente
+            </a>
+        </div>
+    </div>
+    </div>
+    <!-- Footer (basado en footer.png) -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Columna 1: VERANUM -->
+                <div class="footer-section">
+                    <h3 class="text-lg font-bold mb-4">VERANUM</h3>
+                    <p class="text-gray-300 mb-4">
+                        Más de 30 años brindando excelencia en el servicio y atención personalizada para hacer sentir a cada huésped como en casa.
+                    </p>
+                </div>
+                
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="footer-section">
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="inicio.html" class="text-gray-300 hover:text-white">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">Sobre Nosotros</a></li>
+                        <li><a href="rooms.html" class="text-gray-300 hover:text-white">Habitaciones</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3: Destinos -->
+                <div class="footer-section">
+                    <h3 class="text-lg font-bold mb-4">Destinos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html#santiago" class="text-gray-300 hover:text-white">Veranum Santiago</a></li>
+                        <li><a href="about.html#vregion" class="text-gray-300 hover:text-white">Veranum V Región</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 4: Contacto -->
+                <div class="footer-section">
+                    <h3 class="text-lg font-bold mb-4">Contacto</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary"></i>
+                            <span>veranum@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary"></i>
+                            <span>+56 2 2345 6789</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                            <span>Santiago y V Región, Chile</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Derechos reservados -->
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2025 Veranum Hoteles. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>    
