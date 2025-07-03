@@ -1,0 +1,13 @@
+Configuraciones bd:
+
+Programa: Laragon
+user: root
+password: root1
+
+CREATE DATABASE IF NOT EXISTS veranum_db;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    correo VARCHAR(255) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL
+);
